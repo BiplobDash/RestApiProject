@@ -1,4 +1,5 @@
 import 'package:crudd_app/Screen/ProductCreateScreen.dart';
+import 'package:crudd_app/Screen/ProductGridViewScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: ProductCreateScreen(),
+      home: ProductGridViewScreen(),
     );
   }
 }
