@@ -51,3 +51,21 @@ var resultCode = response.statusCode;
   }
 
 }
+
+
+Future<bool> productUpdateRequest(formValues, id) async {
+  var url = Uri.parse('https://crud.teamrabbil.com/api/v1/UpdateProduct/'+id);
+  var postBody = json.encode(formValues);
+  var postHeader = {"Content-Type": "application/json"};
+  var response = await http.post(url, body: postBody, headers: postHeader);
+  var resultCode = response.statusCode;
+  var resultBody = json.decode(response.body);
+
+  if (resultCode == 200 && resultBody['status'] == 'success') {
+    successToast('Request Success');
+    return true;
+  } else {
+    ErrorToast('Request fail ! try agin');
+    return false;
+  }
+}

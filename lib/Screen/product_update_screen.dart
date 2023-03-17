@@ -1,4 +1,5 @@
 import 'package:crudd_app/RestApi/RestClient.dart';
+import 'package:crudd_app/Screen/ProductGridViewScreen.dart';
 import 'package:crudd_app/Style/style.dart';
 import 'package:flutter/material.dart';
 
@@ -60,10 +61,11 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
       setState(() {
         Loading = true;
       });
-      await productCreateRequest(FormValues);
-      setState(() {
-        Loading = false;
-      });
+      await productUpdateRequest(FormValues, widget.productItem['_id']);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: ((context) => ProductGridViewScreen())),
+          (route) => false);
     }
   }
 
@@ -173,7 +175,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                                 onPressed: () {
                                   FormOnSubmit();
                                 },
-                                child: SuccessButtonChild('Submit')),
+                                child: SuccessButtonChild('Update')),
                           )
                         ],
                       ),
